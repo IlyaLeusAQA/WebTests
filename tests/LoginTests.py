@@ -11,7 +11,7 @@ WRONG_PASSWORD = '12345'
 ERROR_TEXT_WITH_EMPTY_PASSWORD = 'Введите пароль'
 ERROR_TEXT_WITH_WRONG_PASSWORD_AND_LOGIN = 'Неправильно указан логин и/или пароль'
 
-
+#Тесты на страницу логина
 @allure.suite('Проверка страницы авторизации')
 @allure.title('Проверка корректности ошибки при пустом логине и пароле')
 def test_empty_login_and_password(browser):
