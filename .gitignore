@@ -1,0 +1,10 @@
+# created by virtualenv automatically
+venv/bin
+.idea/
+venv/
+allure-results/
+.pytest_cache/
+core/__pycache__/
+pages/__pycache__/
+tests/__pycache__/
+.DS_Store
