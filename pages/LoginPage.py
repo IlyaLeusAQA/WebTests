@@ -1,3 +1,5 @@
+import allure
+
 from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
@@ -24,27 +26,40 @@ class LoginPageHelper(BasePage):
         self.check_page()
 
     def check_page(self):
-        self.find_element(LoginPageLocators.LOGIN_FIELD)
-        self.find_element(LoginPageLocators.PASSWORD_FIELD)
-        self.find_element(LoginPageLocators.LOGIN_BUTTON)
-        self.find_element(LoginPageLocators.LOGIN_QR_BUTTON)
-        self.find_element(LoginPageLocators.BUTTON_ENTER)
-        self.find_element(LoginPageLocators.BUTTON_QR)
-        self.find_element(LoginPageLocators.LINK_RESTORE)
-        self.find_element(LoginPageLocators.REGISTRATION_BUTTON)
-        self.find_element(LoginPageLocators.LOGIN_BUTTON_VK_ID)
-        self.find_element(LoginPageLocators.LOGIN_WITH_EMAIL)
-        self.find_element(LoginPageLocators.LOGIN_INTO_YANDEX)
-        self.find_element(LoginPageLocators.OTHER_VARIANT_LOGIN)
+        with allure.step('Проверяем элементы на странице'):
+            self.attach_screenshot()
+            self.find_element(LoginPageLocators.LOGIN_FIELD)
+            self.find_element(LoginPageLocators.PASSWORD_FIELD)
+            self.find_element(LoginPageLocators.LOGIN_BUTTON)
+            self.find_element(LoginPageLocators.LOGIN_QR_BUTTON)
+            self.find_element(LoginPageLocators.BUTTON_ENTER)
+            self.find_element(LoginPageLocators.BUTTON_QR)
+            self.find_element(LoginPageLocators.LINK_RESTORE)
+            self.find_element(LoginPageLocators.REGISTRATION_BUTTON)
+            self.find_element(LoginPageLocators.LOGIN_BUTTON_VK_ID)
+            self.find_element(LoginPageLocators.LOGIN_WITH_EMAIL)
+            self.find_element(LoginPageLocators.LOGIN_INTO_YANDEX)
+            self.find_element(LoginPageLocators.OTHER_VARIANT_LOGIN)
 
+    @allure.step('Нажимаем на кнопку "Войти"')
     def click_login(self):
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
+    @allure.step('Получаем текст ошибки')
     def get_error_text(self):
+        self.attach_screenshot()
         return self.find_element(LoginPageLocators.FILL_LOGIN_AND_EMPTY_PASSWORD_ERROR_TEXT).text
 
+    @allure.step('Вводим логин')
     def input_login(self, login):
         self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys(login)
+        self.attach_screenshot()
 
+    @allure.step('Вводим пароль')
     def input_password(self, password):
         self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(password)
+        self.attach_screenshot()
+
+    @allure.step('Нажимаем на кнопку "Не получается войти"')
+    def click_can_not_enter(self):
+        self.find_element(LoginPageLocators.LINK_RESTORE).click()
