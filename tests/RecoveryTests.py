@@ -1,3 +1,4 @@
+import allure
 from core.BaseTest import browser
 from pages.BasePage import BasePage
 from pages.RecoveryPage import RecoveryPageHelper
@@ -10,6 +11,8 @@ EMPTY_PHONE_ERROR_TEXT = 'Неправильный номер телефона.'
 EMPTY_EMAIL_ERROR_TEXT = 'Неправильный формат почты'
 
 
+@allure.suite('Проверка страницы восстановления доступа')
+@allure.title('Попытка получения кода без введенного номера телефона')
 def test_empty_phone_get_code(browser):
     BasePage(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
@@ -21,6 +24,8 @@ def test_empty_phone_get_code(browser):
     assert recovery_page_by_phone.get_error_text_empty_phone() == EMPTY_PHONE_ERROR_TEXT
 
 
+@allure.suite('Проверка страницы восстановления доступа')
+@allure.title('Попытка получения кода без введенного email')
 def test_empty_email_get_code(browser):
     BasePage(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
