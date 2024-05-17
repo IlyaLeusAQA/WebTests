@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
@@ -12,3 +13,6 @@ class BasePage:
 
     def get_url(self, url):
         return self.driver.get(url)
+
+    def attach_screenshot(self):
+        allure.attach(self.driver.get_screenshot_as_png(), 'Скриншот', allure.attachment_type.PNG)
