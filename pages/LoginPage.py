@@ -18,6 +18,7 @@ class LoginPageLocators:
     LOGIN_INTO_YANDEX = (By.XPATH, '//*[@data-l="t,yandex"]')
     OTHER_VARIANT_LOGIN = (By.XPATH, '//*[@data-l="t,other"]')
     FILL_LOGIN_AND_EMPTY_PASSWORD_ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
+    GO_TO_RECOVERY = (By.XPATH, '//*[@name="st.go_to_recovery"]')
 
 
 class LoginPageHelper(BasePage):
@@ -63,3 +64,12 @@ class LoginPageHelper(BasePage):
     @allure.step('Нажимаем на кнопку "Не получается войти"')
     def click_can_not_enter(self):
         self.find_element(LoginPageLocators.LINK_RESTORE).click()
+
+    @allure.step('Переходим к восстановлению')
+    def go_to_recovery(self, password):
+        for i in range(3):
+            with allure.step(f'Вводим неверный пароль {i + 1} раз'):
+                self.input_password(password)
+                self.click_login()
+                self.attach_screenshot()
+        self.find_element(LoginPageLocators.GO_TO_RECOVERY).click()
