@@ -1,6 +1,6 @@
 import allure
 
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from core.BaseTest import browser
 from pages.HelpPage import HelpPageLocators, HelpPageHelper
 from pages.AdvetisementCabinetHelp import AdvertisementCabinetPageHelper
@@ -12,7 +12,7 @@ BASE_URL = 'https://ok.ru/help'
 @allure.suite('Проверка страницы помощи')
 @allure.title('Проверка названия страницы "Рекламный кабинет"')
 def test_help_for_advetisement(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     HelpPage = HelpPageHelper(browser)
     HelpPage.scrollToItem(HelpPageLocators.ADVERTISEMENT_CABINET)
     AdvertisementCabinetPageHelper(browser)
@@ -21,7 +21,7 @@ def test_help_for_advetisement(browser):
 @allure.suite('Проверка страницы помощи')
 @allure.title('Проверка ответа на обратную связь')
 def test_help_download_video(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     HelpPage = HelpPageHelper(browser)
     HelpPage.scrollToItem(HelpPageLocators.SECURITY)
     SecurityPage = SecurityHelpPageHelper(browser)

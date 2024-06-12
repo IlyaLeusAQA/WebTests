@@ -1,4 +1,4 @@
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 import allure
 
@@ -12,7 +12,7 @@ class SecurityHelpPageLocators:
     WAS_THIS_ANSWER_HELPFUL = (By.XPATH, '//span[text()= "Был ли этот ответ полезным?"]')
 
 
-class SecurityHelpPageHelper(BasePage):
+class SecurityHelpPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
