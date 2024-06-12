@@ -1,6 +1,6 @@
 import allure
 from core.BaseTest import browser
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from pages.RecoveryPage import RecoveryPageHelper
 from pages.LoginPage import LoginPageHelper
 from LoginTests import BASE_URL
@@ -16,7 +16,7 @@ PASSWORD_TEXT = '123'
 @allure.suite('Проверка страницы восстановления доступа')
 @allure.title('Попытка получения кода без введенного номера телефона')
 def test_empty_phone_get_code(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
     login_page.click_can_not_enter()
     recovery_page = RecoveryPageHelper(browser)
@@ -29,7 +29,7 @@ def test_empty_phone_get_code(browser):
 @allure.suite('Проверка страницы восстановления доступа')
 @allure.title('Попытка получения кода без введенного email')
 def test_empty_email_get_code(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
     login_page.click_can_not_enter()
     recovery_page = RecoveryPageHelper(browser)
@@ -42,7 +42,7 @@ def test_empty_email_get_code(browser):
 @allure.suite('Проверка восстановления профиля')
 @allure.title('Проверка перехода к восстановлению по телефону после нескольких неудачных попыток авторизации')
 def test_go_to_recovery_by_phone_after_many_fails(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
     login_page.input_login(LOGIN_TEXT)
     login_page.go_to_recovery(PASSWORD_TEXT)
@@ -56,7 +56,7 @@ def test_go_to_recovery_by_phone_after_many_fails(browser):
 @allure.suite('Проверка восстановления профиля')
 @allure.title('Проверка перехода к восстановлению по почте после нескольких неудачных попыток авторизации')
 def test_go_to_recovery_by_email_after_many_fails(browser):
-    BasePage(browser).get_url(BASE_URL)
+    BasePageHelper(browser).get_url(BASE_URL)
     login_page = LoginPageHelper(browser)
     login_page.input_login(LOGIN_TEXT)
     login_page.go_to_recovery(PASSWORD_TEXT)

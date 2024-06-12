@@ -1,6 +1,6 @@
 import allure
 
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 
@@ -21,7 +21,7 @@ class LoginPageLocators:
     GO_TO_RECOVERY = (By.XPATH, '//*[@name="st.go_to_recovery"]')
 
 
-class LoginPageHelper(BasePage):
+class LoginPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
